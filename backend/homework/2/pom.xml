@@ -13,7 +13,6 @@
         <module>Question2</module>
         <module>Question3</module>
         <module>Logback</module>
-        <module>Logback</module>
     </modules>
 
     <properties>

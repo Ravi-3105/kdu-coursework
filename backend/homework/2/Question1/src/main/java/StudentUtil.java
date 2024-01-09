@@ -50,8 +50,14 @@ public class StudentUtil {
         int[] studentIdList = {1001, 1002};
         char[][] studentsGrade =  { { 'A', 'A', 'A', 'B' }, { 'A', 'B', 'B' } };
         log.info("Student GPA Range: ");
-        for(int student: getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrade)){
-            log.info(""+student);
+        int[] studentInRange = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrade);
+        try {
+            for (int student : studentInRange) {
+                log.info("" + student);
+            }
+        }
+        catch (Exception e){
+            log.info("Range invalid");
         }
     }
 }

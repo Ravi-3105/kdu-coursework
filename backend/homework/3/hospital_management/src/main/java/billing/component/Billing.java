@@ -8,8 +8,10 @@ public class Billing {
         double[] payments = new double[2];
 
         HealthInsurancePlan patientInsurancePlan = patient.getInsurancePlan();
-        payments[0] = patientInsurancePlan.getCoverage() * amount;
+
         if(patientInsurancePlan!=null) {
+
+            payments[0] = patientInsurancePlan.getCoverage() * amount;
             payments[1] = amount - payments[0];
             if(patientInsurancePlan instanceof PlatinumPlan){
                 payments[1] -= 50;

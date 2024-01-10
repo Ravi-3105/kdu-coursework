@@ -35,7 +35,7 @@ public class SentimentAnalyzer {
     private static int checkForWasPhrasePattern(String review, String
             feature, String[] posOpinionWords, String[] negOpinionWords) {
         int opinion = 0;
-        String pattern = feature + " was ";
+        String pattern = feature+" was ";
 
         int position = review.indexOf(pattern);
 

@@ -6,11 +6,13 @@ public class StudentUtil {
     private static Logger log = LoggerFactory.getLogger(StudentUtil.class);
     public static double[] calculateGPA(int[] studentIdList, char[][]
             studentsGrades) {
-        int n = studentIdList.length, subjects,i=0;
+        int n = studentIdList.length;
+        int subjects;
+        int i=0;
         double[] gpa =new double[n];
         double gpaTotal;
         for(char[] student:studentsGrades){
-            subjects = 0;
+            subjects = studentsGrades.length;
             gpaTotal = 0;
             for(char grade:student){
                 if(grade == 'A'){
@@ -20,7 +22,6 @@ public class StudentUtil {
                     gpaTotal += 3;
                 }
                 else gpaTotal +=2;
-                subjects++;
             }
             gpa[i++]=gpaTotal/subjects;
         }
@@ -29,7 +30,7 @@ public class StudentUtil {
     public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentsGrades) {
 
         //Already given function definition so to use the same function definition formulating the array;
-        if (lower > higher) return null;
+        if (lower > higher) return {};
         double[] gpa = calculateGPA(studentIdList, studentsGrades);
         int n = 0;
         for (double value : gpa) {         // Loop to find the length of the array
@@ -38,7 +39,8 @@ public class StudentUtil {
             }
         }
         int[] studentGPA = new int[n];
-        int k = 0, i;
+        int k = 0;
+        int i;
         for (i = 0; i < gpa.length; i++) {
             if (gpa[i] <= higher && gpa[i] >= lower) {
                 studentGPA[k++] = studentIdList[i];
@@ -51,12 +53,12 @@ public class StudentUtil {
         char[][] studentsGrade =  { { 'A', 'A', 'A', 'B' }, { 'A', 'B', 'B' } };
         log.info("Student GPA Range: ");
         int[] studentInRange = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrade);
-        try {
+        if(studentInRange.length==0){
             for (int student : studentInRange) {
                 log.info("" + student);
             }
         }
-        catch (Exception e){
+        else
             log.info("Range invalid");
         }
     }

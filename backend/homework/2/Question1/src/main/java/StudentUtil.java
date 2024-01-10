@@ -30,8 +30,9 @@ public class StudentUtil {
     public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentsGrades) {
 
         //Already given function definition so to use the same function definition formulating the array;
-        if (lower > higher) return {};
+
         double[] gpa = calculateGPA(studentIdList, studentsGrades);
+        if (lower > higher) return null;
         int n = 0;
         for (double value : gpa) {         // Loop to find the length of the array
             if (value <= higher && value >= lower) {
@@ -60,6 +61,5 @@ public class StudentUtil {
         }
         else
             log.info("Range invalid");
-        }
     }
 }

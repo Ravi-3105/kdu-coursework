@@ -7,7 +7,7 @@ public class Logging {
     public static void print(String s){
         log.info(s);
     }
-    public static void main(String args[]){
+    public static void main(String[] args){
         log.info("hello");
     }
 }

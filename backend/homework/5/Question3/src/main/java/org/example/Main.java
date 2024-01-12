@@ -14,7 +14,7 @@ public  class Main
         }
         catch (InterruptedException e)
         {
-            Logging.print(String.valueOf(e));
+            throw new RuntimeException(e);
         }
 
         Logging.print("Exiting main thread");

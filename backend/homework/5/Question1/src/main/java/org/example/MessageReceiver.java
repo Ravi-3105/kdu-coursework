@@ -13,7 +13,7 @@ public class MessageReceiver implements Runnable {
                 String message = messageQueue.dequeue();
                 Logging.print("Received from receiver " + message);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
     }
 }

@@ -69,14 +69,14 @@ public class Main {
         }
         JsonNode transaction = parseJsonFile("backend/assignments/1/crypto/src/main/resources/small_transaction.json");
 
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
-        CountDownLatch countDownLatch = new CountDownLatch(20);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        CountDownLatch countDownLatch = new CountDownLatch(3);
         for (JsonNode node : transaction) {
             executorService.submit(executeTransactions(node, countDownLatch));
             getBlockHash();
         }
         try {
-            countDownLatch.await(25);
+            countDownLatch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

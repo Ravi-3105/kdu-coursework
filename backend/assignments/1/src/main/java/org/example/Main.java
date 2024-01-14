@@ -1,12 +1,11 @@
 package org.example;
 
-import ch.qos.logback.classic.spi.CallerData;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.slf4j.LoggerFactory;
 
-import javax.management.DescriptorAccess;
 import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Path;
@@ -15,11 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Main {
-
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ExecuteTransaction.class);
 
     static Detail detail = new Detail();
     public static ArrayList<String[]> parseCSV(Path path) {
@@ -33,7 +30,7 @@ public class Main {
             allData = (ArrayList<String[]>) csvReader.readAll();
 
         } catch (Exception e) {
-            Logging.print(String.valueOf(e));
+            logger.error(String.valueOf(e));
         }
 
         return allData;
@@ -47,14 +44,14 @@ public class Main {
             File from = new File(file);
             jsonNode = mapper.readTree(from);
         } catch (Exception e) {
-            Logging.print(String.valueOf(e));
+            logger.error(String.valueOf(e));
         }
         return jsonNode;
     }
 
 
     public static void main(String[] args) throws Exception {
-        ArrayList<String[]> coins = parseCSV(Path.of("backend/assignments/1/crypto/src/main/resources/coins.csv"));
+        ArrayList<String[]> coins = parseCSV(Path.of("src/main/resources/coins.csv"));
         for (String[] row : coins) {
             NumberFormat nf = NumberFormat.getInstance();
             double number = nf.parse(row[4]).doubleValue();
@@ -62,31 +59,23 @@ public class Main {
             detail.addCoins(obj);
         }
 
-        ArrayList<String[]> traders = parseCSV(Path.of("backend/assignments/1/crypto/src/main/resources/traders.csv"));
+        ArrayList<String[]> traders = parseCSV(Path.of("src/main/resources/traders.csv"));
         for (String[] row : traders) {
             Traders obj = new Traders(row[0], row[1], row[2], row[3], new HashMap<>(),0.0);
             detail.addTraders(obj);
         }
-        JsonNode transaction = parseJsonFile("backend/assignments/1/crypto/src/main/resources/small_transaction.json");
+        JsonNode transaction = parseJsonFile("src/main/resources/small_transaction.json");
+        executeTransactions(transaction,new CountDownLatch(1));
 
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        CountDownLatch countDownLatch = new CountDownLatch(3);
-        for (JsonNode node : transaction) {
-            executorService.submit(executeTransactions(node, countDownLatch));
-            getBlockHash();
-        }
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        executorService.shutdown();
     }
 
-    public static Thread executeTransactions(JsonNode jsonNode, CountDownLatch latch) {
-        ExecuteTransaction executeTransaction = new ExecuteTransaction(jsonNode, latch, detail);
-        Thread thread = new Thread(executeTransaction);
-        return thread;
+    public static void executeTransactions(JsonNode jsonNode, CountDownLatch latch) {
+        for(JsonNode node:jsonNode){
+            ExecuteTransaction executeTransaction = new ExecuteTransaction(node, latch, detail);
+            Thread thread = new Thread(executeTransaction);
+            thread.start();
+            getBlockHash();
+        }
     }
 
     static String getBlockHash() {

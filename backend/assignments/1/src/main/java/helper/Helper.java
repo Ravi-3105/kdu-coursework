@@ -2,31 +2,29 @@ package helper;
 
 import org.example.Coins;
 import org.example.Detail;
-import org.example.Logging;
 import org.example.Traders;
 
-import javax.management.DescriptorAccess;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Helper {
     public Coins findCoinDeatils(String symbol, Detail detail) {
+        Coins found  = new Coins(-1,"","",0.0,0);
         for (Coins coin : detail.getListCoins()) {
             if (coin.getCoinSymbol().equals(symbol)) {
-                return coin;
+                found = coin;
             }
         }
-        return null;
+        return found;
     }
 
     public Traders findTraderDetails(String wallet, Detail detail) {
+        Traders trade = new Traders("","","","",new HashMap<String,Long>(),0.0);
         for (Traders traders : detail.getListTraders()) {
             if (traders.getWalletAddress().equals(wallet)) {
-                return traders;
+                trade = traders;
             }
         }
-        return null;
+        return trade;
     }
 
     /*

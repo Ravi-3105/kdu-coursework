@@ -3,7 +3,7 @@ package org.example;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import helper.Helper;
-import org.apache.commons.logging.Log;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -11,9 +11,9 @@ public class ExecuteTransaction implements Runnable {
     JsonNode jsonNode;
     CountDownLatch latch;
     Detail detail;
-
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ExecuteTransaction.class);
     public ExecuteTransaction() {
-        Logging.print("Testing");
+        logger.error("Testing");
     }
 
     public ExecuteTransaction(JsonNode jsonNode, CountDownLatch latch, Detail detail) {
@@ -37,10 +37,11 @@ public class ExecuteTransaction implements Runnable {
                     wait();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
+                    logger.error("Interrupted");
                 }
             }
             notify();
-            Logging.print("Coins bought: ".concat(coinSymbol));
+            logger.error("Coins bought: ".concat(coinSymbol));
             detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
             detail.setBoughtValue(wallet, coinSymbol, quantity);
             detail.setProfitLoss(wallet, -coins.getPrice() * quantity);
@@ -54,10 +55,11 @@ public class ExecuteTransaction implements Runnable {
                     wait();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
+                    logger.error("Interrupted");
                 }
             }
             notify();
-            Logging.print("Coins Sold: ".concat(coinSymbol));
+            logger.error("Coins Sold: ".concat(coinSymbol));
             detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
             detail.setSoldValue(wallet, coinSymbol, quantity);
             detail.setProfitLoss(wallet, coins.getPrice() * quantity);
@@ -65,13 +67,13 @@ public class ExecuteTransaction implements Runnable {
         }
         else if (type.equals("UPDATE_PRICE")) {
 
-            Logging.print("Coin Price updated : ".concat(coinSymbol));
+            logger.error("Coin Price updated : ".concat(coinSymbol));
             detail.setCoinPrice(coinSymbol, data.get("price").asDouble());
 
         }
         else if (type.equals("ADD_VOLUME")) {
 
-            Logging.print("Coin Volume increased : ".concat(coinSymbol));
+            logger.error("Coin Volume increased : ".concat(coinSymbol));
             detail.setSupply(coinSymbol, coins.getCirculatingSupply() + data.get("volume").asLong());
         }
         latch.countDown();

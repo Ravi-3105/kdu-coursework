@@ -54,7 +54,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        ArrayList<String[]> coins = parseCSV(Path.of("crypto/src/main/resources/coins.csv"));
+        ArrayList<String[]> coins = parseCSV(Path.of("backend/assignments/1/crypto/src/main/resources/coins.csv"));
         for (String[] row : coins) {
             NumberFormat nf = NumberFormat.getInstance();
             double number = nf.parse(row[4]).doubleValue();
@@ -62,12 +62,12 @@ public class Main {
             detail.addCoins(obj);
         }
 
-        ArrayList<String[]> traders = parseCSV(Path.of("crypto/src/main/resources/traders.csv"));
+        ArrayList<String[]> traders = parseCSV(Path.of("backend/assignments/1/crypto/src/main/resources/traders.csv"));
         for (String[] row : traders) {
             Traders obj = new Traders(row[0], row[1], row[2], row[3], new HashMap<>(),0.0);
             detail.addTraders(obj);
         }
-        JsonNode transaction = parseJsonFile("crypto/src/main/resources/large_transaction.json");
+        JsonNode transaction = parseJsonFile("backend/assignments/1/crypto/src/main/resources/small_transaction.json");
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         CountDownLatch countDownLatch = new CountDownLatch(2);

@@ -63,7 +63,7 @@ public class MainTest {
     @Test
     public void testParseCSV() throws IOException {
         // check for coins.csv
-        Path coinCsvPath = Path.of("src/test/resources/coins.csv");
+        Path coinCsvPath = Path.of("crypto/src/test/resources/coins.csv");
         ArrayList<String[]> expectedCoins = new ArrayList<>();
         expectedCoins.add(new String[]{"0", "1", "Bitcoin", "BTC", "34194.58", "18938712"});
         expectedCoins.add(new String[]{"1", "2", "Ethereum", "ETH", "2270.78", "119292815"});
@@ -81,7 +81,7 @@ public class MainTest {
         }
 
         //check for traders.csv
-        Path traderCsvPath = Path.of("src/test/resources/traders.csv");
+        Path traderCsvPath = Path.of("crypto/src/test/resources/traders.csv");
         ArrayList<String[]> expectedTraders = new ArrayList<>();
         expectedTraders.add(new String[]{"0", "James", "Butt", "504-621-8927", "0x6048710a582fc9ebc9f46afd0fcda2f8"});
         expectedTraders.add(new String[]{"1", "Josephine", "Darakjy", "810-292-9388", "0x5a1fcde6a86ea0dd483f33d81f35000f"});
@@ -119,15 +119,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_1.json");
+        transactionArray = Main.parseJsonFile("crypto/src/test/resources/test_transaction_1.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
 
         try {
@@ -157,15 +152,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_2.json");
+        transactionArray = Main.parseJsonFile("crypto/src/test/resources/test_transaction_2.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(5, TimeUnit.SECONDS);
@@ -195,13 +185,9 @@ public class MainTest {
         int numberOfThreads = 12;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_3.json");
+        transactionArray = Main.parseJsonFile("crypto/src/test/resources/test_transaction_3.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(10, TimeUnit.SECONDS);
@@ -231,13 +217,9 @@ public class MainTest {
         int numberOfThreads = 20;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_4.json");
+        transactionArray = Main.parseJsonFile("crypto/src/test/resources/test_transaction_4.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(100, TimeUnit.SECONDS);

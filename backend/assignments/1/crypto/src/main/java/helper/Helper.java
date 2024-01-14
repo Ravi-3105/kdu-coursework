@@ -28,6 +28,9 @@ public class Helper {
         }
         return null;
     }
+    
+    /*
+    Unused Helper funcitons::
 
     public void topNCoins(Detail detail, int n) {
         Collections.sort(detail.getListCoins(), new CoinComparator());
@@ -76,6 +79,7 @@ public class Helper {
             n--;
         }
     }
+     */
 
 }
 

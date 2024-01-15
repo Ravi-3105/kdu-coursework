@@ -7,7 +7,7 @@ import org.example.Traders;
 import java.util.HashMap;
 
 public class Helper {
-    public Coins findCoinDeatils(String symbol, Detail detail) {
+    synchronized public Coins findCoinDeatils(String symbol, Detail detail) {
         Coins found  = new Coins(-1,"","",0.0,0);
         for (Coins coin : detail.getListCoins()) {
             if (coin.getCoinSymbol().equals(symbol)) {
@@ -17,7 +17,7 @@ public class Helper {
         return found;
     }
 
-    public Traders findTraderDetails(String wallet, Detail detail) {
+    synchronized public Traders findTraderDetails(String wallet, Detail detail) {
         Traders trade = new Traders("","","","",new HashMap<String,Long>(),0.0);
         for (Traders traders : detail.getListTraders()) {
             if (traders.getWalletAddress().equals(wallet)) {

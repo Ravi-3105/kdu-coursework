@@ -5,48 +5,56 @@ import java.util.ArrayList;
 public class Detail {
     ArrayList<Coins> listCoins = new ArrayList<>();
     ArrayList<Traders> listTraders = new ArrayList<>();
-    public void addCoins(Coins coins){
+
+    public void addCoins(Coins coins) {
         listCoins.add(coins);
     }
-    public void addTraders(Traders traders){
+
+    public void addTraders(Traders traders) {
         listTraders.add(traders);
     }
-    public ArrayList<Coins> getListCoins(){
+
+    public ArrayList<Coins> getListCoins() {
         return listCoins;
     }
 
     public ArrayList<Traders> getListTraders() {
         return listTraders;
     }
-    public void setSupply(String symbol, long supply){
+
+    synchronized public void setSupply(String symbol, long supply) {
         listCoins.stream()
-                .filter(obj->obj.getCoinSymbol().equals(symbol))
+                .filter(obj -> obj.getCoinSymbol().equals(symbol))
                 .findFirst()
-                .ifPresent(o->o.setCirculatingSupply(supply));
+                .ifPresent(o -> o.setCirculatingSupply(supply));
     }
-    public  void setBoughtValue(String wallet, String coin, Long quantity){
+
+    synchronized public void setBoughtValue(String wallet, String coin, Long quantity) {
         listTraders.stream()
-                .filter(obj->obj.getWalletAddress().equals(wallet))
+                .filter(obj -> obj.getWalletAddress().equals(wallet))
                 .findFirst()
-                .ifPresent(o->o.setBought(coin,quantity));
+                .ifPresent(o -> o.setBought(coin, quantity));
     }
-    public  void setSoldValue(String wallet, String coin,Long quantity){
+
+    synchronized public void setSoldValue(String wallet, String coin, Long quantity) {
         listTraders.stream()
-                .filter(obj->obj.getWalletAddress().equals(wallet))
+                .filter(obj -> obj.getWalletAddress().equals(wallet))
                 .findFirst()
-                .ifPresent(o->o.setSold(coin,quantity));
+                .ifPresent(o -> o.setSold(coin, quantity));
     }
-    public void setProfitLoss(String wallet ,double value){
+
+    synchronized public void setProfitLoss(String wallet, double value) {
         listTraders.stream()
-                .filter(obj->obj.getWalletAddress().equals(wallet))
+                .filter(obj -> obj.getWalletAddress().equals(wallet))
                 .findFirst()
-                .ifPresent(o->o.setProfit(value));
+                .ifPresent(o -> o.setProfit(value));
     }
-    public void setCoinPrice(String symbol, double price){
+
+    synchronized public void setCoinPrice(String symbol, double price) {
         listCoins.stream()
-                .filter(obj->obj.getCoinSymbol().equals(symbol))
+                .filter(obj -> obj.getCoinSymbol().equals(symbol))
                 .findFirst()
-                .ifPresent(o->o.setPrice(price));
+                .ifPresent(o -> o.setPrice(price));
     }
 }
 

@@ -12,6 +12,7 @@ public class ExecuteTransaction implements Runnable {
     CountDownLatch latch;
     Detail detail;
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ExecuteTransaction.class);
+
     public ExecuteTransaction() {
         logger.error("Testing");
     }
@@ -30,51 +31,56 @@ public class ExecuteTransaction implements Runnable {
         String coinSymbol = data.get("coin").asText();
         Coins coins = helper.findCoinDeatils(coinSymbol, detail);
         if (type.equals("BUY")) {
+
             String wallet = data.get("wallet_address").asText();
             Long quantity = data.get("quantity").asLong();
-            while (quantity > coins.getCirculatingSupply()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    logger.error("Interrupted");
+            try {
+                if (quantity > coins.getCirculatingSupply()) {
+                    Thread.sleep(10);
                 }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-            notify();
             logger.error("Coins bought: ".concat(coinSymbol));
-            detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
-            detail.setBoughtValue(wallet, coinSymbol, quantity);
-            detail.setProfitLoss(wallet, -coins.getPrice() * quantity);
+            synchronized (coins) {
+                detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
+                detail.setBoughtValue(wallet, coinSymbol, quantity);
+                detail.setProfitLoss(wallet, -coins.getPrice() * quantity);
+            }
 
         } else if (type.equals("SELL")) {
+
             String wallet = data.get("wallet_address").asText();
             Long quantity = data.get("quantity").asLong();
             Traders traders = helper.findTraderDetails(wallet, detail);
-            while (quantity > traders.getPurse(coinSymbol)) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    logger.error("Interrupted");
+            try {
+                if (quantity > traders.getPurse(coinSymbol)) {
+                    Thread.sleep(10);
                 }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-            notify();
             logger.error("Coins Sold: ".concat(coinSymbol));
-            detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
-            detail.setSoldValue(wallet, coinSymbol, quantity);
-            detail.setProfitLoss(wallet, coins.getPrice() * quantity);
+            synchronized (coins) {
+                detail.setSupply(coinSymbol, coins.getCirculatingSupply() - quantity);
+                detail.setSoldValue(wallet, coinSymbol, quantity);
+                detail.setProfitLoss(wallet, coins.getPrice() * quantity);
+            }
 
-        }
-        else if (type.equals("UPDATE_PRICE")) {
 
+        } else if (type.equals("UPDATE_PRICE")) {
             logger.error("Coin Price updated : ".concat(coinSymbol));
-            detail.setCoinPrice(coinSymbol, data.get("price").asDouble());
+            synchronized (coins) {
+                detail.setCoinPrice(coinSymbol, data.get("price").asDouble());
+            }
 
-        }
-        else if (type.equals("ADD_VOLUME")) {
 
+        } else if (type.equals("ADD_VOLUME")) {
             logger.error("Coin Volume increased : ".concat(coinSymbol));
-            detail.setSupply(coinSymbol, coins.getCirculatingSupply() + data.get("volume").asLong());
+            synchronized (coins) {
+                detail.setSupply(coinSymbol, coins.getCirculatingSupply() + data.get("volume").asLong());
+            }
+
         }
         latch.countDown();
     }

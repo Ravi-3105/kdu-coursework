@@ -2,7 +2,6 @@ package org.example.inventry;
 
 import org.example.beans.Factory1;
 import org.example.beans.Factory2;
-import org.example.blueprint.VehicleService;
 
 import java.util.ArrayList;
 import java.util.List;

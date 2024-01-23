@@ -1,9 +1,7 @@
 package org.example.config;
 
 import org.example.beans.TyreService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
 
 public class TyreConfig {

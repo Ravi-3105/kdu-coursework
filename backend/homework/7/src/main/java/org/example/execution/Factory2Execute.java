@@ -1,7 +1,6 @@
 package org.example.execution;
 
 
-import org.example.beans.Factory1;
 import org.example.beans.Factory2;
 import org.example.config.Factory2Config;
 import org.example.inventry.Inventry;
@@ -14,8 +13,8 @@ import java.util.List;
 public class Factory2Execute {
 
 
-    private static final Logger logger = LoggerFactory.getLogger(Factory1.class);
-    private static final double basePrice = 2000000.0;
+    private static final Logger logger = LoggerFactory.getLogger(Factory2.class);
+    private static final double BASE = 2000000.0;
 
     public static void execution() {
         AnnotationConfigApplicationContext context =
@@ -27,7 +26,7 @@ public class Factory2Execute {
         for(int index =0; index < 3;index++) {
 
             vehicle = context.getBean(Factory2.class);
-            vehicle.setPrice(basePrice);
+            vehicle.setPrice(BASE);
             Inventry.setVehicleSFactory2(vehicle);
         }
 

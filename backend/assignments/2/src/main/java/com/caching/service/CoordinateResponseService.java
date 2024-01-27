@@ -6,6 +6,8 @@ import com.caching.model.Coordinate;
 import com.caching.repository.BackendAPI;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 
 import static com.caching.constant.Fixed.API_KEY;
@@ -20,6 +22,8 @@ public class CoordinateResponseService {
      * @param address get address from co-ordinates
      * @return co-ordinate object
      */
+
+    private final Logger logger = LoggerFactory.getLogger(CoordinateResponseService.class);
     public Coordinate getCoordinate(String address) {
         String apiUrl = FORWARD.getValue()+api+"&query="+address;
         Coordinate coordinate = null;
@@ -40,9 +44,14 @@ public class CoordinateResponseService {
             // Get the value of the "region" field
             double latitude = result.getDouble("latitude");
             double longitude = result.getDouble("longitude");
+
+            logger.info("Latitude: ".concat(String.valueOf(latitude)));
+            logger.info("Longitude: ".concat(String.valueOf(longitude)));
+
             coordinate = new Coordinate(latitude , longitude);
 
         } catch (Exception e) {
+            logger.info("Exception invalid address");
             throw new MyCustomException("Invalid Address");
         }
 

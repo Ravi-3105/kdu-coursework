@@ -5,6 +5,8 @@ import com.caching.model.Address;
 import com.caching.repository.BackendAPI;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.caching.constant.Fixed.API_KEY;
 import static com.caching.constant.Fixed.REVERSE;
@@ -20,6 +22,8 @@ public class AddressResponseService {
      * @param longitude geocoding longitude
      * @return  address object
      */
+
+    private final Logger logger = LoggerFactory.getLogger(AddressResponseService.class);
     public Address getAddress(double latitude, double longitude) {
         String apiUrl = REVERSE.getValue()+api+"&query="+latitude+","+longitude;
         Address address = null;
@@ -36,7 +40,10 @@ public class AddressResponseService {
             JSONObject result = dataObject.getJSONObject(0);
             address = new Address(result.getString("label"));
 
+            logger.info("Address: ".concat(address.getAddress()));
+
         } catch (Exception e) {
+            logger.info("Invalid Co-ordinates");
             throw new MyCustomException("Invalid Coordinates");
         }
 

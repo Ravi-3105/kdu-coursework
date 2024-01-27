@@ -6,15 +6,19 @@ import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
-import static java.util.Arrays.asList;  // Import from java.util.Arrays
+import static java.util.Arrays.asList;
+
+/**
+ * Redis Cache configuration class
+ */
 @Configuration
 @EnableCaching
 public class ConfigCaf {
     @Bean
     public Caffeine<Object, Object> caffeineConfig() {
         return Caffeine.newBuilder()
-                .maximumSize(3)  // after it reaches the maxsize it will evict in LRU fashion
-                .expireAfterAccess(30, TimeUnit.MINUTES); // time bases eviction
+                .maximumSize(3)
+                .expireAfterAccess(30, TimeUnit.MINUTES);
     }
     @Bean("caffeineCacheManager")
     public CacheManager caffeineCacheManager() {

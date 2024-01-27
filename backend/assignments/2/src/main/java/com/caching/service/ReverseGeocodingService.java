@@ -1,12 +1,12 @@
 package com.caching.service;
 
 import com.caching.model.Address;
-import com.caching.repository.BackendAPI;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Reverse-Geocoding Service class asks for address
+ */
 @Service
 public class ReverseGeocodingService {
     @Cacheable(value = "reverse-geocoding" , key = "{#latitude,#longitude}")

@@ -14,6 +14,11 @@ public class CoordinateResponseService {
 
     private final String api= API_KEY.getValue();
 
+    /**
+     * gives addres form co-ordinates
+     * @param address get address from co-ordinates
+     * @return co-ordinate object
+     */
     public Coordinate getCoordinate(String address) {
         String apiUrl = "http://api.positionstack.com/v1/forward?access_key="+api+"&query="+address;
         Coordinate coordinate = null;

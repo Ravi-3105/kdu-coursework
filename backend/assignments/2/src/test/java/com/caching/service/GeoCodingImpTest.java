@@ -276,14 +276,14 @@ public class GeoCodingImpTest {
         cacheManager.getCache("reverse-geocoding").clear();
     }
 
-    private void hitGeoCodingCache(String address) throws Exception {
+    public void hitGeoCodingCache(String address) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
                         .param("address", address)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    private void hitReverseGeoCodingCache(String latitude, String longitude) throws Exception {
+    public void hitReverseGeoCodingCache(String latitude, String longitude) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
                         .param("latitude", latitude)
                         .param("longitude", longitude)

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 
 import static com.caching.constant.Fixed.API_KEY;
+import static com.caching.constant.Fixed.FORWARD;
 
 public class CoordinateResponseService {
 
@@ -20,7 +21,7 @@ public class CoordinateResponseService {
      * @return co-ordinate object
      */
     public Coordinate getCoordinate(String address) {
-        String apiUrl = "http://api.positionstack.com/v1/forward?access_key="+api+"&query="+address;
+        String apiUrl = FORWARD.getValue()+api+"&query="+address;
         Coordinate coordinate = null;
         try {
             String response = BackendAPI.sendHttpRequest(apiUrl);

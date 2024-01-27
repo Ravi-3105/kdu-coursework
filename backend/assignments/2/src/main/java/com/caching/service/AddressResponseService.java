@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static com.caching.constant.Fixed.API_KEY;
+import static com.caching.constant.Fixed.REVERSE;
 
 public class AddressResponseService {
 
@@ -20,7 +21,7 @@ public class AddressResponseService {
      * @return  address object
      */
     public Address getAddress(double latitude, double longitude) {
-        String apiUrl = "http://api.positionstack.com/v1/reverse?access_key="+api+"&query="+latitude+","+longitude;
+        String apiUrl = REVERSE.getValue()+api+"&query="+latitude+","+longitude;
         Address address = null;
         try {
             String response = BackendAPI.sendHttpRequest(apiUrl);

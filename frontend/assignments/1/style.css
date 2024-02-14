@@ -1,0 +1,458 @@
+/* Style reset */
+* {
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/Roboto-Regular.ttf);
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img:hover,
+.full-name:hover,
+.user-name:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.main {
+  max-width: 1079px;
+  height: 726px;
+  margin-left: 10;
+  display: flex;
+  justify-content: left;
+}
+
+.img-icon {
+  display: flex;
+  align-items: center;
+}
+
+.img-icon a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.img-icon img {
+  width: 35px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.form-group-2 {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  margin-left: 20px;
+}
+
+.post-icons {
+  padding-left: 4rem;
+  color: #1da1f2;
+}
+
+.post-icons i {
+  padding-right: 10px;
+  font-size: 1.4rem;
+}
+
+.post-icons i:hover {
+  color: rgba(29, 160, 242, 0.7607843137);
+  cursor: pointer;
+}
+
+.form-group-2 .tweet-btn {
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  background: #8ed0f9;
+  color: #fff;
+  border-radius: 25px;
+  margin-right: 1rem;
+}
+
+.form-group-2 .tweet-btn:hover {
+  background: #1da1f2;
+}
+
+.twitter img {
+  display: block;
+  width: 100%;
+}
+
+.twitter .user-pics img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 1px 10px 30px 20px;
+}
+
+.twitter {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  font-size: 15px;
+  width: 100%;
+  line-height: 1.75rem;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid #39393a;
+}
+
+.full-name:hover {
+  text-decoration: underline;
+}
+
+.user-content img {
+  border-radius: 20px;
+}
+
+.user-content {
+  font-family: "Roboto";
+  padding-right: 1rem;
+  color: rgb(48, 52, 56);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.user-content-box .user-names {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.user-names .full-name {
+  padding-right: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.user-names .user-name {
+  padding-right: 10px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgb(101, 119, 134);
+}
+
+.time {
+  color: rgb(101, 119, 134);
+}
+
+.user-names i {
+  padding-top: 0.6rem;
+  margin-left: 50%;
+  color: rgb(101, 119, 134);
+}
+
+.content-icons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 4rem 1rem 0;
+}
+
+.content-icons i {
+  color: rgb(101, 119, 134);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #39393a;
+}
+
+.nav-list:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.header h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.header i {
+  color: rgb(29, 161, 242);
+  background: rgb(245, 248, 250);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.header i:hover {
+  background: rgba(29, 161, 242, 0.1);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.main-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(20, 23, 26);
+}
+
+.sub-text {
+  font-size: 13px;
+  color: rgb(101, 119, 134);
+}
+
+.left {
+  margin-top: 30px;
+  flex: 1 0 22%;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  background: black;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #39393a;
+}
+
+.center-flex-container {
+  flex: 3 0 45%;
+  background: black;
+}
+
+.right-flex-container {
+  flex: 2 0 31%;
+  height: 100%;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background: black;
+  border-left: 1px solid rgb(230, 236, 240);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.logo i {
+  color: white;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.navigation-section a {
+  font-weight: 750;
+  color: white;
+  padding: 10px 15px;
+}
+
+.current-page a {
+  color: white;
+}
+
+.navigation-section a:hover {
+  background: grey;
+  padding: 10px 15px;
+  border-radius: 25px;
+}
+
+.icon {
+  margin: 1.2rem 2rem;
+  white-space: nowrap;
+}
+
+.navigation-section i {
+  padding-right: 0.5rem;
+}
+
+.navigation-section {
+  margin-top: -1rem;
+}
+
+.tweet a {
+  display: block;
+  width: 100%;
+  margin-left: 20px;
+  color: #fff;
+  background: #1da1f2;
+  font-size: 1rem;
+  align-items: center;
+  font-weight: 700;
+  padding: 10px 5rem;
+  border-radius: 25px;
+}
+
+.profile-box {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5.5rem;
+  align-self: center;
+  padding: 0 0.6rem;
+  margin-bottom: 7rem;
+}
+
+.profile-box:hover {
+  background: rgba(29, 161, 242, 0.1);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.profile-box img {
+  display: block;
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.profile-box .full-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.profile-box .options-icon {
+  color: #39393a;
+  margin-left: 1rem;
+}
+
+.user-name {
+  color: #39393a;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Main Container */
+.home {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: black;
+  border-bottom: 1px solid #39393a;
+  color: #39393a;
+  padding: 0.5rem 1rem;
+}
+
+.nav-list .trend-icon {
+  font-size: 13px;
+  color: rgb(101, 119, 134);
+}
+
+.follow-header .main-text {
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.full-name h1:hover {
+  text-decoration: underline;
+}
+
+.user-name .sub-text {
+  font-size: 17px;
+  color: rgb(101, 119, 134);
+}
+
+.home h1 {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.home i {
+  font-size: 1.4rem;
+  color: rgb(29, 161, 242);
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.home i:hover {
+  background: rgba(29, 161, 242, 0.1);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.tweet-box {
+  border-bottom: 1px solid #39393a;
+}
+
+.post-input {
+  display: flex;
+  flex-flow: row;
+  padding: 0.3rem 1rem;
+}
+
+.nav-items {
+  align-content: center;
+}
+
+.tweet-box img {
+  display: inline-block;
+  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.icon-container {
+  display: flex; /* Change display to flex */
+  align-items: center; /* Align items vertically */
+  width: 30px;
+}
+
+.icon-link {
+  text-decoration: none;
+  display: flex; /* Change display to flex */
+  align-items: center; /* Align items vertically */
+}
+
+.content-icons a {
+  color: gray; /* Set color for the text */
+}
+
+.content-icons img {
+  width: 10px;
+  height: auto;
+}
+
+.tweet-box input {
+  width: 90%;
+  height: 60px;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.tweet-box input::-moz-placeholder {
+  color: rgba(123, 124, 126, 0.719);
+}
+
+.tweet-box input::placeholder {
+  color: rgba(123, 124, 126, 0.719);
+}
+
+.tweet-box input:focus {
+  outline: none;
+}

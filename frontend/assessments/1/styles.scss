@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+.all {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    background-image: url(./webpage.jpg);
+}
+header {
+    background-color: #c97b07;
+    color: #fff;
+    padding: 2rem;
+}
+.pip {
+    margin: 30px;
+}
+.pip2{
+    width: 15rem;
+    padding: 1rem;
+    background-color: black;
+}
+nav {
+    background-color: black;
+    color: #fff;
+    padding: 2rem;
+
+    position: sticky;
+    top: 0;
+}
+.msg {
+    display: flex;
+    margin: 15rem;
+    color: white;
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 4rem;
+    
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+}
+
+li {
+    margin: 0 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}
+
+.twin {
+    display: flex;
+    background-color: lightgray;
+    margin-top: 100px;
+    min-height: 100vh;
+}
+h3 {
+    color: white;
+    margin: 0;
+}
+
+.para {
+    h2 {
+        padding: 1rem;
+        margin-left: 1rem;
+        font-size: 3rem;
+        margin-top: 1rem;
+    }
+    width: auto;
+    font-size: 20px;
+    color: black;
+}
+
+.bbox {
+    flex: 60%;
+    display: inline-block;
+    
+    color: white;
+    font-size: 20px;
+    width: auto;
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 786px) {
+    header {
+        padding: 15px;
+    }
+    .pip2{
+        width: auto;
+        margin:2rem;
+    }
+    nav ul {
+        justify-content: flex-start;
+    }
+    .twin {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+}
+@media screen and (min-width: 787px) and (max-width: 1366px) {
+    header {
+        padding: 15px;
+    }
+    nav ul {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+    header {
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 1921px) {
+    header {
+        padding: 5px;
+    }
+}

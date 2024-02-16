@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+        integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+        crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+    <script src="./index.js"></script>
+    <h1>
+        KDU Stock Market Dashboard
+    </h1>
+    <main>
+        <div id="combine">
+            <div id="nav">
+                <div id="logo">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/af1307136664867.Y3JvcCw1NzUzLDQ1MDAsNDIsMA.jpg"
+                        alt="logo"></img>
+                    <div id="logo-name">Zomato</div>
+                </div>
+                <div id="price">
+                    Price
+                    <div id="pnum">1400</div>
+                </div>
+                <div id="qty">
+                    <input class="inp" type="number" placeholder="Enter the qty"></input>
+                </div>
+                <button id="buy">Buy</button>
+                <button id="sell">Sell</button>
+            </div>
+            <div id="graph">
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div id="bars">
+                    <div id="bar1">
+                    </div>
+                    <div id="bar2">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="history">
+            <div id="hname">History</div>
+            <div id="stock">
+                <div id="ele">
+                    100 Stocks
+                </div>
+                <p class="op">Buy</p>
+            </div>
+            <div id="stock">
+                <div id="ele">
+                    100 Stocks
+                </div>
+                <p class="opt">Sold</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image" href="img/logo-icon.png" />
+<title>Home / X</title>
+<style>
+body {
+    display: flex;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+}
+
+#leftpane {
+    width: 10%;
+}
+
+#rightpane {
+    width: 20%;
+}
+
+#navigation-section {
+    border-right: 0.05rem solid rgb(109, 107, 107);
+    padding: 3rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    z-index: 1; /* Ensure it appears above other content */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    transition: 0.5s; /* Add smooth transition effect */
+}
+
+#navigation-section.hide {
+    left: -250px; /* Hide the sidebar */
+}
+
+.logo, .home, .explore, .notify, .msg, .book, .list, .comm, .prm, .prof, .more {
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.home img, .explore img, .notify img, .msg img, .book img, .list img, .comm img, .prm img, .prof img, .more img {
+    width: 30px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.left-btn {
+    color: white;
+    border-radius: 30rem;
+    width: 8rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+.nav-post {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #222;
+    color: white;
+}
+
+input {
+    background-color: black;
+    border: none;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.post-cont {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.post-type {
+    display: flex;
+    align-items: center;
+}
+
+.post-type .post-icons {
+    display: flex;
+    margin-right: 1rem;
+}
+
+.post-type .post-icons img {
+    width: 30px;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.post-type .post-btn {
+    color: white;
+    border-radius: 30rem;
+    width: 8rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+.comb {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 768px) {
+    #leftpane, #rightpane {
+        display: none; /* Hide left and right panes on small screens */
+    }
+
+    #navigation-section {
+        width: 250px; /* Set width of sidebar */
+    }
+
+    #post {
+        padding: 2rem;
+        width: calc(100% - 250px); /* Calculate width of main content */
+        margin-left: 250px; /* Adjust margin to accommodate sidebar */
+        border-right: 0; /* Remove border on small screens */
+    }
+}
+</style>
+</head>
+<body>
+
+<div id="navigation-section" class="hide">
+    <div class="logo"><img src="img/logo-icon.png" alt="Twitter">Twitter</div>
+    <div class="home"><img src="img/home-icon.png" alt="Home">Home</div>
+    <div class="explore"><img src="img/search-icon.png" alt="Explore">Explore</div>
+    <div class="notify"><img src="img/notification-icon.png" alt="Notifications">Notifications</div>
+    <div class="msg"><img src="img/message-icon.png" alt="Messages">Messages</div>
+    <div class="book"><img src="img/bookmarks-icon.png" alt="Bookmarks">Bookmarks</div>
+    <div class="list"><img src="img/List-icon.png" alt="Lists">Lists</div>
+    <div class="comm"><img src="img/Comm-icon.png" alt="Communities">Communities</div>
+    <div class="prm"><img src="img/pre-icon.png" alt="Premium">Premium</div>
+    <div class="prof"><img src="img/profile-icon.png" alt="Profile">Profile</div>
+    <div class="more"><img src="img/more-icon.png" alt="More">More</div>
+    <button class="left-btn" type="submit">Post</button>
+    <div class="nav-post">
+        <div class="comb">
+            <div class="nit">Nitesh Gupta</div>
+            <div class="handle">@nit_hck</div>
+        </div>
+    </div>
+</div>
+
+<div id="post">
+    <div class="post-cont">
+        <img src="img/nit-icon.png" alt="Profile">
+        <input type="text" placeholder="What's happening?">
+    </div>
+    <form class="post-type">
+        <div class="post-icons">
+            <img class="pimg" src="img/media-icon.png" alt="Media">
+            <img class="pimg" src="img/gif.png" alt="Gif">
+            <img class="pimg" src="img/poll-icon.png" alt="Poll">
+            <img class="pimg" src="img/emj-icon.png" alt="Emoji">
+            <img class="pimg" src="img/Cal-icon.png" alt="Calender">
+            <img class="pimg" src="img/location-icon.png" alt="Location">
+        </div>
+        <button class="post-btn">Post</button>
+    </form>
+</div>
+
+</body>
+</html>

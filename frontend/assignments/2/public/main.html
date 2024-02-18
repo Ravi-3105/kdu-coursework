@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="img/logo-icon.png" />
+    <title>Home / X</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <script src="./script.js"></script>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+        integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+        crossorigin="anonymous"></script>
+    <div id="leftpane"></div>
+    <div id="navigation-section">
+
+        <div class="logo"><img src="img/logo-icon.png" alt="Twitter" width="50px" height="auto"></div>
+        <div class="home"><img src="img/home-icon.png" alt="Home" width="50px" height="auto">
+            <div class="read">Home</div>
+        </div>
+        <div class="explore"><img src="img/search-icon.png" alt="Explore" width="50px" height="auto">
+            <div class="read">Explore</div>
+        </div>
+        <div class="notify"><img src="img/notification-icon.png" alt="Notifications" width="50px" height="auto">
+            <div class="read">Navigation</div>
+        </div>
+        <button id="msg" class="msg"><img src="img/message-icon.png" alt="Messages" width="50px" height="auto">
+            <div class="read">Messages</div>
+        </button>
+        <div class="book"><img src="img/bookmarks-icon.png" alt="Bookmarks" width="50px" height="auto">
+            <div class="read">Bookmarks</div>
+        </div>
+        <div class="list"><img src="img/List-icon.png" alt="Lists" width="50px" height="auto">
+            <div class="read">Lists</div>
+        </div>
+        <div class="comm"><img src="img/Comm-icon.png" alt="Comm-icon" width="50px" height="auto">
+            <div class="read">Communities</div>
+        </div>
+        <div class="prm"><img src="img/pre-icon.png" alt="Premium" width="50px" height="auto">
+            <div class="read">Premium</div>
+        </div>
+        <div class="prof"><img src="img/profile-icon.png" alt="Profile" width="50px" height="auto" width="25em"
+                height="auto">
+            <div class="read">Profile</div>
+        </div>
+        <div class="more"><img src="img/more-icon.png" alt="More" width="50px" height="auto">
+            <div class="read">More</div>
+        </div>
+        <button class="left-btn" type="submit">Post</button>
+        <div class="nav-post"><img src="img/nit-icon.png" alt="Profile" width="50px" height="auto" width="25em"
+                height="auto">
+            <div class="comb">
+                <div class="nit">Nitesh Gupta</div>
+                <div class="handle">@nit_hck</div>
+            </div>
+        </div>
+    </div>
+    <div id="post">
+        <div class="post-cont">
+            <img src="img/nit-icon.png" alt="Profile" width="50px" height="auto" width="25em" height="auto">
+            <input id="post-input" type="text" placeholder="What is happening?"></input>
+        </div>
+        <form class="post-type">
+            <div class="post-icons">
+                <img class="pimg" src="img/media-icon.png" alt="Media">
+                <img class="pimg" src="img/gif.png" alt="Gif">
+                <img class="pimg" src="img/poll-icon.png" alt="Poll">
+                <img class="pimg" src="img/emj-icon.png" alt="Emoji">
+                <img class="pimg" src="img/Cal-icon.png" alt="Calender">
+                <img class="pimg" src="img/location-icon.png" alt="Location">
+            </div>
+            <button class="post-btn" event="click">Post</button>
+        </form>
+    </div>
+    <div id="rightpane">
+        <div class="box">
+            <input type="text" id="msgInput" placeholder="Enter your message"></input>
+            <button id="sendMessage">Send</button>
+        </div>
+        <div id="messages"></div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+#skillList{  
+    font-size: 20px;  
+    list-style: none;
+}
+.skillHead{
+    font-size: 30px;
+    text-align: center;
+    color: #eb940f;
+}
+.skill{
+    padding: 20px;
+    margin:30px;
+    background-color: #a5d8ff;
+    width: 50%;
+    height: 60vh;
+}

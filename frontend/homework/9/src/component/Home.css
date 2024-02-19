@@ -1,0 +1,9 @@
+.profile{
+    background-color: #ffec99;
+    color: black;
+    height: 100vh;
+}
+.skills{
+    display: flex;
+    position: relative;
+}

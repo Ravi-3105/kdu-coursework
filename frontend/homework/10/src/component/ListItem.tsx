@@ -3,6 +3,8 @@ import { DeleteItem } from './DeleteItem'
 import { IState } from './StateInter'
 import { IListItem } from './List'
 
+declare function alert(message: string): void;
+
 interface IListPair {
     item: IListItem;
     change: IState;

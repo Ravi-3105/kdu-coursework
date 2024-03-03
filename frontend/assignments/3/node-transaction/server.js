@@ -1,23 +1,22 @@
+// server.js
+
 import express from 'express';
-import { createServer } from 'http';
+import http from 'http';
 import { Server as SocketServer } from 'socket.io';
 import fetch from 'node-fetch';
-import cors from 'cors'; // Import the cors middleware
+import cors from 'cors';
 
 const app = express();
-const server = createServer(app);
-
-// Use the cors middleware to allow requests from any origin
-app.use(cors());
-
+const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
-    origin: "*", // Allow requests from this origin
-    methods: ["GET", "POST"] // Allow specified HTTP methods
+    origin: '*',
+    methods: ['GET', 'POST']
   }
 });
 
-// Fetch stock data from an API
+app.use(cors());
+
 async function fetchStockData() {
   try {
     const response = await fetch('https://kdu-automation.s3.ap-south-1.amazonaws.com/mini-project-apis/all-stocks-transactions.json');
@@ -32,11 +31,6 @@ async function fetchStockData() {
 io.on('connection', async (socket) => {
   console.log('A user connected');
 
-  socket.on('selectedCompany', async (selectedCompany) => {
-    console.log('Selected company:', selectedCompany);
-    // Handle the selected company here
-  });
-
   const initialStockData = await fetchStockData();
   socket.emit('initialStockData', initialStockData);
 
@@ -50,3 +44,7 @@ io.on('connection', async (socket) => {
   });
 });
 
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});

@@ -1,10 +1,11 @@
 {
+  "type": "module",
   "name": "transaction",
   "version": "1.0.0",
   "description": "",
-  "main": "server.mjs",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

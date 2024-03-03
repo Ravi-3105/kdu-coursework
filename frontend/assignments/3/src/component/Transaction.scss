@@ -1,0 +1,81 @@
+.body {
+    display: flex;
+}
+.filters {
+    margin: 3rem;
+    top: 0;
+    z-index: 1;
+    padding: 0.5rem;
+    border: 2px solid black;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    display: flex;
+    width: 25%;
+    position: sticky;
+    height: 20rem;
+    flex-direction: column;
+}
+.head {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.clr {
+    color: #679fd3;
+    background-color: #e9ecef;
+    border: 0px;
+}
+.search {
+    padding: 0.3rem;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.txt {
+    background-color: #e9ecef;
+    margin: auto;
+}
+.date {
+    display: flex;
+    padding: 0.3rem;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.end,
+.start {
+    background-color: #e9ecef;
+    margin: auto;
+}
+.status {
+    padding: 0.3rem;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.company {
+    padding: 0.3rem;
+    align-items: center;
+}
+.transaction {
+    width: 50%;
+}
+.table{
+    width: 60rem;
+}
+h2{
+    border-bottom: 1px solid black;
+    font-weight: 500;
+}
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+.dot.red {
+    background-color: red;
+}
+
+.dot.green {
+    background-color: green;
+}
+

@@ -119,15 +119,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_1.json");
+        transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_1.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
 
         try {
@@ -157,15 +152,10 @@ public class MainTest {
         int numberOfThreads = 3;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_2.json");
+        transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_2.json");
 
-            new Main();
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            fail();
-        }
+        new Main();
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(5, TimeUnit.SECONDS);
@@ -195,13 +185,9 @@ public class MainTest {
         int numberOfThreads = 12;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_3.json");
+        transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_3.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(10, TimeUnit.SECONDS);
@@ -231,13 +217,9 @@ public class MainTest {
         int numberOfThreads = 20;
         CountDownLatch latch = new CountDownLatch(numberOfThreads);
 
-        try {
-            transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_4.json");
+        transactionArray = Main.parseJsonFile("src/test/resources/test_transaction_4.json");
 
-            Main.executeTransactions(transactionArray, latch);
-        } catch (IOException e) {
-            fail();
-        }
+        Main.executeTransactions(transactionArray, latch);
 
         try {
             latch.await(100, TimeUnit.SECONDS);

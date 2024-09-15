@@ -1,0 +1,23 @@
+.product{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.items{
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+.control{
+    padding: 1rem;
+}
+.detail{
+    display: flex;
+}
+.img{
+    width: 100%;
+}

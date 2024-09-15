@@ -1,0 +1,19 @@
+#hobbyList {
+    font-size: 20px;
+    list-style: none;
+}
+
+.hobby {
+    background-color: #b2f2bb;
+    width: 50%;
+    padding: 20px;
+    margin: 30px;
+}
+
+.hobbyHead {
+    font-size: 30px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    color: #eb940f;
+}

@@ -1,0 +1,11 @@
+{
+  "HostName": "chp-HP-EliteBook-840-G7-Notebook-PC",
+  "OperatingSystem": "linux",
+  "Architecture": "x64",
+  "OSRelease": "6.5.0-17-generic",
+  "Uptime": 42866.86,
+  "CPUCores": 8,
+  "TotalMemory": 16524693504,
+  "FreeMemory": 9922846720,
+  "CurrentWorkingDirectory": "/home/chp/frontend/Exercise5"
+}

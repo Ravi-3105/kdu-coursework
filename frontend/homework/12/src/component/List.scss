@@ -1,0 +1,11 @@
+ul > li {
+    padding: 10px;
+    font-size: 16px;  
+    background-color:white;
+    list-style-type: none;
+  }
+  .itemList{
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: column;
+  }

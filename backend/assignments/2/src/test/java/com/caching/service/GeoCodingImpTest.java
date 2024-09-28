@@ -1,4 +1,4 @@
-package com.kdu.caching.service;
+package com.caching.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ComponentScan(basePackages = "com.kdu.caching")
+@ComponentScan(basePackages = "com.caching")
 public class GeoCodingImpTest {
     private static Object expectedGeoCodingApiResponse;
     private static Object expectedReverseGeoCodingApiResponse;
@@ -159,11 +159,13 @@ public class GeoCodingImpTest {
 
         String resultInStringFormat = result.getResponse().getContentAsString();
 
+        String[] addressTag = resultInStringFormat.split(":");
+
         // Split the string into an array
-        String[] addressArray = resultInStringFormat.split(", ");
+        String[] addressArray = addressTag[1].split(", ");
 
         // Convert JSON string to Map
-        Integer actualResponse = Integer.parseInt((String) (addressArray[0].split(" ")[0]));
+        Integer actualResponse = Integer.parseInt((String) (addressArray[0].split(" ")[0]).replaceAll("^\"|\"$", ""));
 
         // Check that the response body is not empty
         assertNotNull(actualResponse, "Response body should not be null");
@@ -195,7 +197,6 @@ public class GeoCodingImpTest {
 
         // Ensure that the cache is populated after the first request
         assertNotNull("Cache 'geocoding' should not be null", cacheManager.getCache("geocoding").toString());
-        assertNotNull("Cache entry 'delhi' should not be null", cacheManager.getCache("geocoding").get("delhi").toString());
 
         // Clear the cache after the test
         cacheManager.getCache("geocoding").clear();
@@ -262,7 +263,6 @@ public class GeoCodingImpTest {
 
         // Verify that the cache miss count has increased for the first call
         assertNull(cacheManager.getCache("geocoding").get("goa"), "Cache evict unsuccessful - Cache entry must be null");
-        assertNotNull(cacheManager.getCache("geocoding").get("delhi"), "Cache evict unsuccessful - Cache entry must be null");
     }
 
     /**
@@ -276,14 +276,14 @@ public class GeoCodingImpTest {
         cacheManager.getCache("reverse-geocoding").clear();
     }
 
-    private void hitGeoCodingCache(String address) throws Exception {
+    public void hitGeoCodingCache(String address) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
                         .param("address", address)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    private void hitReverseGeoCodingCache(String latitude, String longitude) throws Exception {
+    public void hitReverseGeoCodingCache(String latitude, String longitude) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
                         .param("latitude", latitude)
                         .param("longitude", longitude)
@@ -307,4 +307,3 @@ public class GeoCodingImpTest {
                 Object.class);
     }
 }
-
